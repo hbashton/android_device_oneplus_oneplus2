@@ -288,15 +288,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus2/su:root/sbin/su
+    device/oneplus/oneplus2/su:system/xbin/su
 
 # SU Support
 SUPERUSER_EMBEDDED := true
 SUPERUSER_PACKAGE_PREFIX := com.koushikdutta.superuser
 
 PRODUCT_PACKAGES += \
-    Superuser \
-    su
+    Superuser
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=3
