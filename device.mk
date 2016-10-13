@@ -234,6 +234,7 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
+    init.superuser.rc \
     ueventd.qcom.rc
 
 # RIL
@@ -286,5 +287,22 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/wifi/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
+PRODUCT_COPY_FILES += \
+    device/oneplus/oneplus2/su:system/sbin
+
+# SU Support
+SUPERUSER_EMBEDDED := true
+SUPERUSER_PACKAGE := com.koushikdutta.superuser
+
+PRODUCT_PACKAGES += \
+    Superuser \
+    su
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.root_access=3
+
+# Enable ADB authentication
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.adb.secure=1
 # Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)
